@@ -3,11 +3,11 @@ const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
 const User = require('../models/users');
-
+const { validateToken } = require('../middlewares/auth');
 
 const app = express();
 
-app.get('/users', function(req, res) {
+app.get('/users', validateToken, (req, res) => {
     let from = req.query.from || 0;
     from = Number(from);
 
@@ -40,7 +40,7 @@ app.get('/users', function(req, res) {
 
 });
 
-app.post('/user', function(req, res) {
+app.post('/user', (req, res) => {
     let body = req.body;
     //console.log(req.body.name);
 
