@@ -7,6 +7,7 @@ var productsSchema = new Schema({
     unitPrice: { type: Number, required: [true, 'El precio Unitario es obligatorio'] },
     desc: { type: String, required: false },
     status: { type: Boolean, required: true, default: true },
+    img: { type: String, required: false },
     category: { type: Schema.Types.ObjectId, ref: 'Categories', required: true },
     user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
